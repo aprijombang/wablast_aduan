@@ -7,12 +7,15 @@ The input data from the message can be obtained from the complaint form made usi
 
 mycontact: https://t.me/Ariessda
 
-Google Form
+**Google Form**
+
 ![msedge_AYn6xoWhLU](https://user-images.githubusercontent.com/99067179/172047812-61973711-0fb0-41b1-ba68-9df9360d1a15.png)
 
-Google Spreadsheet
+**Google Spreadsheet**
+
 ![msedge_gMH9vfEwj6](https://user-images.githubusercontent.com/99067179/172047832-5887bacd-a796-4890-967d-cd7f6530faf2.png)
 
-API with Google Apps Script
+**API with Google Apps Script**
+
 ![msedge_HPZsdZmNy7](https://user-images.githubusercontent.com/99067179/172047851-d07290ec-298e-4d53-9859-9f64aa0066ad.png)
 
