@@ -42,7 +42,6 @@ const kirimWA = cron.schedule(
 						  let notelp=element['Nomor Handphone (whatsapp)'];
 						  let sta=element['Status'];
 						  notelp='62'+toString(parseInt(notelp));
-						  notelp='6281330496884';
 						  let url=`https://script.google.com/macros/s/AKfycbx_8bYVc5XDXUWxlpADzGdMsym0oITdOHEwI80TMIYz4wngwwzYUc_IbmtYneY0rC6R/exec?aksi=2&kdkua=${kua}`;
 						  
 						  if (sta==0){
@@ -55,7 +54,6 @@ const kirimWA = cron.schedule(
 										let arr=((res.data.rows))
 										let nokua=arr['NO TELP']
 										nokua='62'+toString(parseInt(nokua));
-										nokua='6281330496884';
 										let balasaduan=`🗣 KUA *${kua}* mendapat pengaduan dari masyarakat perihal *${hal}*, dengan detail: *${detail}*\n\nTerima kasih\n\n*Biro Hukum*\n*Asosiasi Penghulu RI*`;
 										sock.sendMessage(`${nokua}@s.whatsapp.net`, { text: balasaduan });
 									}
