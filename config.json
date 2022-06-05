@@ -3,7 +3,7 @@
     "developer": [
         "https://t.me/Ariessda"
     ],
-	"IDGAS":"",
+     "IDGAS":"your API in Google Apps Script",
     "session": "session-md.json",
     "user_db": "users-db.json",
     "timezone": "Asia/Jakarta",
