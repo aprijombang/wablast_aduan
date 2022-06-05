@@ -1,9 +1,11 @@
 {
-    "author": "Aries Setiyawan",
-    "owner": [
-        "Your_Phonenumber@s.whatsapp.net"
+    "appName": "Aduan Blast",
+    "developer": [
+        "https://t.me/Ariessda"
     ],
+	"IDGAS":"",
     "session": "session-md.json",
+    "user_db": "users-db.json",
     "timezone": "Asia/Jakarta",
-    "footer": "createBy • Ariessda"
+    "footer": "createy by • Ariessda"
 }
