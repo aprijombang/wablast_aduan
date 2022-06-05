@@ -1,0 +1,21 @@
+{
+  "name": "aduanwa-md",
+  "description": "Integrasi Form Pengaduan di Google Form dengan Whatspp Blast dari Baileys",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "AriesSetiyawan",
+  "scripts": {
+    "start": "node ."
+  },
+  "dependencies": {
+    "@adiwajshing/baileys": "^4.1.0",
+    "@hapi/boom": "^10.0.0",
+    "axios": "^0.27.2",
+    "chalk": "^5.0.1",
+    "moment-timezone": "^0.5.34",
+    "node-cron": "^3.0.0",
+    "pino": "^8.0.0",
+    "qrcode-terminal": "^0.12.0"
+  }
+}
