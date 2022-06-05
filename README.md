@@ -9,13 +9,12 @@ mycontact: https://t.me/Ariessda
 
 **Google Form**
 
-![msedge_AYn6xoWhLU](https://user-images.githubusercontent.com/99067179/172047812-61973711-0fb0-41b1-ba68-9df9360d1a15.png)
+![msedge_AYn6xoWhLU](https://user-images.githubusercontent.com/99067179/172048294-f24d07c8-c183-4dd9-8861-01d7959930f0.png)
 
 **Google Spreadsheet**
 
-![msedge_gMH9vfEwj6](https://user-images.githubusercontent.com/99067179/172047832-5887bacd-a796-4890-967d-cd7f6530faf2.png)
+![msedge_gMH9vfEwj6](https://user-images.githubusercontent.com/99067179/172048265-f34d0bc2-d4aa-4d89-948b-cc98d53dc7a1.png)
 
 **API with Google Apps Script**
 
-![msedge_HPZsdZmNy7](https://user-images.githubusercontent.com/99067179/172047851-d07290ec-298e-4d53-9859-9f64aa0066ad.png)
-
+![msedge_HPZsdZmNy7](https://user-images.githubusercontent.com/99067179/172048274-1df91c5e-2bf0-41d0-a7c8-43b6ae1a0804.png)
