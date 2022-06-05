@@ -2,6 +2,7 @@ const {
 	default: WASocket,
 	DisconnectReason,
 	useSingleFileAuthState,
+	makeInMemoryStore,
 	fetchLatestBaileysVersion,
 } = require("@adiwajshing/baileys");
 const Pino = require("pino");
@@ -17,18 +18,16 @@ const { state, saveState } = useSingleFileAuthState(path(__dirname, `./${session
 
 const kirimWA = cron.schedule(
 	"*/1 * * * *",
-	async () => {
-		
+	async () => {	
 		//const html = await request(`https://emojipedia.org/${}`, { method: "GET" });
-		await axios
+		axios
 			  .get('https://script.google.com/macros/s/AKfycbx_8bYVc5XDXUWxlpADzGdMsym0oITdOHEwI80TMIYz4wngwwzYUc_IbmtYneY0rC6R/exec?aksi=0')
 			  .then(res => {
 				//console.log(`statusCode: ${res.status}`)
 				if (res.data.success){
 					let arr=((res.data.rows))
 					if (arr.length>0){
-						arr.forEach(element => {
-													
+						arr.forEach(element => {													
 						  let tglk=element.Timestamp;
 						  let namal=element['Nama Lengkap'];
 						  let nipa=element['Nomor Induk Kependudukan'];
@@ -41,27 +40,26 @@ const kirimWA = cron.schedule(
 						  let ida=element['ID'];
 						  let notelp=element['Nomor Handphone (whatsapp)'];
 						  let sta=element['Status'];
-						  notelp='62'+toString(parseInt(notelp));
-						  let url=`https://script.google.com/macros/s/AKfycbx_8bYVc5XDXUWxlpADzGdMsym0oITdOHEwI80TMIYz4wngwwzYUc_IbmtYneY0rC6R/exec?aksi=2&kdkua=${kua}`;
-						  
+						  notelp='62'+parseInt(notelp).toString();
+						  let url=`https://script.google.com/macros/s/AKfycbx_8bYVc5XDXUWxlpADzGdMsym0oITdOHEwI80TMIYz4wngwwzYUc_IbmtYneY0rC6R/exec?aksi=2&kdkua=${kua}`;						  
 						  if (sta==0){
 								let message=`🙏 Bapak/Ibu/Sdr. *${namal}*,\n\nPengaduan anda telah kami terima dengan nomor resi *${ida}*, segera akan kami tidak lanjuti.\n\nTerima kasih\n\n*Biro Hukum*\n*Asosiasi Penghulu RI*`
 								sock.sendMessage(`${notelp}@s.whatsapp.net`, { text: message });
 								//balasan ke pengirin aduan
-								axios.get(url).then(res => {
-									//console.log(color("[nohp]", "yellow"), JSON.stringify(res.data));
-									if (res.data.success){
-										let arr=((res.data.rows))
-										let nokua=arr['NO TELP']
-										nokua='62'+toString(parseInt(nokua));
+								axios.get(url).then(res1 => {
+									if (res1.data.success){
+										let arr=((res1.data.rows))
+										let nokua=arr[0]['NO TELP']
+										nokua='62'+parseInt(nokua).toString();
 										let balasaduan=`🗣 KUA *${kua}* mendapat pengaduan dari masyarakat perihal *${hal}*, dengan detail: *${detail}*\n\nTerima kasih\n\n*Biro Hukum*\n*Asosiasi Penghulu RI*`;
 										sock.sendMessage(`${nokua}@s.whatsapp.net`, { text: balasaduan });
+										
 									}
 									let urlupd =`https://script.google.com/macros/s/AKfycbx_8bYVc5XDXUWxlpADzGdMsym0oITdOHEwI80TMIYz4wngwwzYUc_IbmtYneY0rC6R/exec?aksi=1&id=${ida}`;
-									axios.get(urlupd).then(res => {
-										if (res.data.success){
-											console.log(res.data)
-										}
+										axios.get(urlupd).then(res => {
+											if (res.data.success){
+												console.log(res.data)
+											}
 									});
 								})
 
@@ -81,6 +79,7 @@ const kirimWA = cron.schedule(
 kirimWA.start();
 const connect = async () => {
 	let { version, isLatest } = await fetchLatestBaileysVersion();
+	
 	//	.log(`Using: ${version}, newer: ${isLatest}`);
 	sock = WASocket({
 		printQRInTerminal: true,
@@ -88,9 +87,7 @@ const connect = async () => {
 		logger: Pino({ level: "silent" }),
 		version,
 	});
-	//store.bind(sock.ev);
-	//sock.chats = store.chats;
-
+	
 	// creds.update
 	sock.ev.on("creds.update", saveState);
 	// connection.update
@@ -100,7 +97,6 @@ const connect = async () => {
 		if (connection) {
 			console.log("Connection Status: ", connection);
 		}
-		//console.log(connection);
 		if (connection === "close") {
 			let reason = new Boom(lastDisconnect?.error)?.output?.statusCode;
 			if (reason === DisconnectReason.badSession) {
