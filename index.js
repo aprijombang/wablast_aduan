@@ -13,7 +13,7 @@ const moment = require("moment-timezone");
 const { Boom } = require("@hapi/boom");
 const axios = require("axios").default;
 let sock;
-const { session, timezone,IDGAS } = require("./config.json");
+const { session, timezone, IDGAS } = require("./config.json");
 const { state, saveState } = useSingleFileAuthState(path(__dirname, `./${session}`), Pino({ level: "silent" }));
 
 const kirimWA = cron.schedule(
