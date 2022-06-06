@@ -13,7 +13,7 @@ const moment = require("moment-timezone");
 const { Boom } = require("@hapi/boom");
 const axios = require("axios").default;
 let sock;
-const { session, timezone, IDGAS } = require("./config.json");
+const { session, timezone, idgas } = require("./config.json");
 const { state, saveState } = useSingleFileAuthState(path(__dirname, `./${session}`), Pino({ level: "silent" }));
 
 const kirimWA = cron.schedule(
@@ -40,7 +40,8 @@ const kirimWA = cron.schedule(
 						  let notelp=element['Nomor Handphone (whatsapp)'];
 						  let sta=element['Status'];
 						  notelp='62'+parseInt(notelp).toString();
-						  let url=`https://script.google.com/macros/s/${IDGAS}/exec?aksi=2&kdkua=${kua}`;						  
+					          console.log(idgas)
+						  let url=`https://script.google.com/macros/s/AKfycbx_8bYVc5XDXUWxlpADzGdMsym0oITdOHEwI80TMIYz4wngwwzYUc_IbmtYneY0rC6R/exec?aksi=2&kdkua=${kua}`;						  
 						  if (sta==0){
 								let message=`🙏 Bapak/Ibu/Sdr. *${namal}*,\n\nPengaduan anda telah kami terima dengan nomor resi *${ida}*, segera akan kami tidak lanjuti.\n\nTerima kasih\n\n*Biro Hukum*\n*Asosiasi Penghulu RI*`
 								sock.sendMessage(`${notelp}@s.whatsapp.net`, { text: message });
@@ -54,7 +55,7 @@ const kirimWA = cron.schedule(
 										sock.sendMessage(`${nokua}@s.whatsapp.net`, { text: balasaduan });
 										
 									}
-									let urlupd =`https://script.google.com/macros/s/${IDGAS}/exec?aksi=1&id=${ida}`;
+									let urlupd =`https://script.google.com/macros/s/AKfycbx_8bYVc5XDXUWxlpADzGdMsym0oITdOHEwI80TMIYz4wngwwzYUc_IbmtYneY0rC6R/exec?aksi=1&id=${ida}`;
 										axios.get(urlupd).then(res => {
 											if (res.data.success){
 												console.log(res.data)
