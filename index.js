@@ -14,13 +14,14 @@ const { Boom } = require("@hapi/boom");
 const axios = require("axios").default;
 let sock;
 const { session, timezone, idgas } = require("./config.json");
+console.log(idgas)
 const { state, saveState } = useSingleFileAuthState(path(__dirname, `./${session}`), Pino({ level: "silent" }));
 
 const kirimWA = cron.schedule(
 	"*/1 * * * *",
 	async () => {	
 		axios
-			  .get('https://script.google.com/macros/s/${IDGAS}/exec?aksi=0')
+			  .get('https://script.google.com/macros/s/AKfycbx_8bYVc5XDXUWxlpADzGdMsym0oITdOHEwI80TMIYz4wngwwzYUc_IbmtYneY0rC6R/exec?aksi=0')
 			  .then(res => {
 				//console.log(`statusCode: ${res.status}`)
 				if (res.data.success){
